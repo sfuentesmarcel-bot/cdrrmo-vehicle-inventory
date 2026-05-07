@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDRMMO Valencia - Fleet Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <h1>CDRMMO VALENCIA</h1>
+            <p>Vehicle Inventory & Driver Tracking</p>
+        </div>
+        <div class="admin-auth">
+            <span id="adminDisplay">Guest Mode</span>
+            <button onclick="handleAuth()" id="authBtn" class="btn-login">Login as Admin</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="stats-grid">
+            <div class="card blue"><h3 id="totalCount">0</h3><p>Total Fleet</p></div>
+            <div class="card green"><h3 id="availCount">0</h3><p>Available</p></div>
+            <div class="card cyan"><h3 id="ongoingCount">0</h3><p>On-Going Ride</p></div>
+            <div class="card orange"><h3 id="maintCount">0</h3><p>Maintenance</p></div>
+        </section>
+
+        <section class="form-container" id="adminForm" style="display: none;">
+            <div class="form-header">
+                <h3>Register New Fleet Vehicle</h3>
+            </div>
+            <div class="registration-grid">
+                <div class="input-field">
+                    <label>Plate Number</label>
+                    <input type="text" id="newPlate" placeholder="e.g. AMB-001">
+                </div>
+                <div class="input-field">
+                    <label>Vehicle Type</label>
+                    <input type="text" id="newType" placeholder="Ambulance">
+                </div>
+                <div class="input-field">
+                    <label>Driver Name</label>
+                    <input type="text" id="newDriver" placeholder="Juan Dela Cruz">
+                </div>
+                <div class="input-field">
+                    <label>Fuel (Liters)</label>
+                    <input type="number" id="newFuel" placeholder="0">
+                </div>
+            </div>
+            <div class="form-footer">
+                <button onclick="addVehicle()" class="btn-submit-new">ADD TO FLEET</button>
+            </div>
+        </section>
+
+        <section class="tool-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" onkeyup="filterFleet()" placeholder="Search by Driver or Plate #...">
+            </div>
+            <button onclick="exportToCSV()" class="btn-export">📥 Export Report</button>
+        </section>
+
+        <section class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plate #</th>
+                        <th>Type</th>
+                        <th>Driver</th>
+                        <th>Fuel (L)</th>
+                        <th>Status</th>
+                        <th>Last Updated</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="vehicleTableBody"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="logModal" class="modal" style="display:none;"><div class="modal-content"><div class="modal-header"><h3 id="modalTitle">History</h3><span class="close-btn" onclick="closeModal()">&times;</span></div><div id="logList" class="modal-body"></div></div></div>
+    <div id="editModal" class="modal" style="display:none;"><div class="modal-content"><div class="modal-header"><h3>Edit Vehicle & Status</h3><span class="close-btn" onclick="closeEditModal()">&times;</span></div><div class="modal-body"><input type="hidden" id="editIndex"><label>Plate #</label><input type="text" id="editPlate" class="modal-input"><label>Driver</label><input type="text" id="editDriver" class="modal-input"><label>Fuel (L)</label><input type="number" id="editFuel" class="modal-input"><label>Status</label><select id="editStatus" class="modal-input"><option value="Available">Available</option><option value="On-Going">On-Going</option><option value="Maintenance">Maintenance</option></select><button onclick="saveEdit()" class="btn-submit-new" style="width:100%; margin-top:10px;">SAVE CHANGES</button></div></div></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

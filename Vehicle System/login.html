@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDRRMO Valencia Vehicle Inventory - Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-shell">
+            <section class="brand-panel">
+                <img src="cdrmmologo.png" alt="CDRRMO Logo" class="brand-logo">
+                <span class="brand-title">CDRRMO VALENCIA</span>
+                <h1 class="brand-heading">Vehicle Inventory Login</h1>
+                <p class="brand-copy">
+                    Welcome to the CDRRMO Valencia vehicle management dashboard. Sign in to review fleet status, update vehicle records, and manage drivers.
+                </p>
+                <div class="brand-contact">
+                    <span><i class="fa fa-phone"></i> +123-456-7890</span>
+                    <span><i class="fa fa-envelope"></i> cdrrmovalencia@gmail.com</span>
+                    <span><i class="fa fa-map-marker-alt"></i> Valencia City, Bukidnon</span>
+                </div>
+            </section>
+
+            <section class="auth-panel">
+                <div class="auth-card">
+                    <h2>Login to your account</h2>
+                    <p>Enter your username, email address, and password to continue.</p>
+                    <form onsubmit="handleLogin(event)">
+                        <div id="errorMsg" class="error-message" aria-live="polite"></div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter your username" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn-login" id="loginBtn">Login</button>
+                    </form>
+                    <div class="login-footer">
+                        <span>Don't have an account? <a href="#">Sign Up now</a></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
